@@ -78,12 +78,23 @@ var SchemaBuilder = {
 					attr_name = this.schema.column_attribute_names[j];
 					var td = tr.appendChild( document.createElement("td") ); 
 					td.setAttribute("class", attr_name );
-					td.appendChild( document.createTextNode( table.columns[col_name].attributes[attr_name] ) );
+					td.appendChild( document.createTextNode( table.columns[col_name].attributes[attr_name] ) );					
+				}
+				
+				if( hasOwnProperty( col, "fk" ) ){
+						
+					tr.setAttribute( "class", "has-foreign-key");		
+					tr.setAttribute( "data-fk_table_id", this.options.prefix + table.attributes.TABLE_NAME);		
+					tr.setAttribute( "data-fk_column_id", this.options.prefix + table.attributes.TABLE_NAME +"-"+ col.attributes.COLUMN_NAME);		
+					console.log(tr);
 				}
 				
 				var td = tr.appendChild( document.createElement("td") ); 
 				td.setAttribute("class", "description" );
 				td.appendChild( document.createTextNode( this.getColumnDescription(table.attributes.TABLE_NAME, col_name) ) );
+				
+				
+				
 			}
 			
 			this.DOMTables[table.attributes.TABLE_NAME] = html_table;
