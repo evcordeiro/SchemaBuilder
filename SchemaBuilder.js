@@ -84,9 +84,8 @@ var SchemaBuilder = {
 				if( hasOwnProperty( col, "fk" ) ){
 						
 					tr.setAttribute( "class", "has-foreign-key");		
-					tr.setAttribute( "data-fk_table_id", this.options.prefix + table.attributes.TABLE_NAME);		
-					tr.setAttribute( "data-fk_column_id", this.options.prefix + table.attributes.TABLE_NAME +"-"+ col.attributes.COLUMN_NAME);		
-					console.log(tr);
+					tr.setAttribute( "data-fk_table_id", this.options.prefix + col['fk']['table'] );		
+					tr.setAttribute( "data-fk_column_id", this.options.prefix + col['fk']['table'] +"-"+ + col['fk']['column']);
 				}
 				
 				var td = tr.appendChild( document.createElement("td") ); 
