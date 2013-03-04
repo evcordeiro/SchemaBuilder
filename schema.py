@@ -47,7 +47,7 @@ class SchemaParser:
 			{ 'key' : "table_columns", 'prompt' : "table column list: ", 'type' : list, 'default' : ["TABLE_NAME"] },
 			{ 'key' : "column_columns", 'prompt' : "column column list: ", 'type' : list, 'default' : ["COLUMN_NAME","COLUMN_TYPE", "COLUMN_DEFAULT","IS_NULLABLE",] },
 			{ 'key' : "show_views", 'prompt' : "show views? : ", 'type' : bool, 'default' : False },
-			{ 'key' : "verbose", 'prompt' : "verbose: ", 'type' : bool, 'default' : False },
+			{ 'key' : "verbose", 'prompt' : "verbose: ", 'type' : bool, 'default' : True },
 			{ 'key' : "encoding", 'prompt' : "encoding (input and db): ", 'type' : unicode, 'default' : "utf8" }
 			]
 
@@ -246,7 +246,7 @@ try:
 	if parser.verbose():
 		file_loc = raw_input("output file name: ")
 		try:
-			ofile = open(file_loc)
+			ofile = open(file_loc, 'w')
 		except:
 			print "Could not open " + file_loc + " for writing"
 			exit()
